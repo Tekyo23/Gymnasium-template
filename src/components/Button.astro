@@ -1,0 +1,29 @@
+---
+interface Props {
+    text: string;
+    class?: string;
+    href: string;
+}
+
+const {text, href} = Astro.props;
+---
+<a class={`btn ${Astro.props.class}`} href={href}>
+    {text}
+</a>
+
+<style>
+    .btn {
+        display: inline-block;
+        background: var(--btn-bg-color);
+        padding: .75rem 1.75rem;
+        border-radius: 6.25rem;
+    }
+
+    .btn__text {
+        font-weight: 700;
+    }
+
+    .darker {
+        background: var(--card-main-color)
+    }
+</style>
