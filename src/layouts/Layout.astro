@@ -1,0 +1,133 @@
+---
+import Navbar from "../components/Navbar.astro";
+import TopInfo from "../components/TopInfo.astro";
+import Footer from "../components/Footer.astro";
+import SectionDivider from "../components/SectionDivider.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gymnasium Template</title>
+    <meta name="author" content="Tekyo">
+    <meta name="description" content="This is a template for a gymnasium landing page.">
+</head>
+<body>
+    <header>
+        <TopInfo />
+        <SectionDivider />
+        <Navbar />
+    </header>
+    <main>
+        <slot />
+    </main>
+    <SectionDivider />
+    <Footer />
+</body>
+</html>
+
+<style is:global>
+    /* Document Font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+    html {
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Colour Variables */
+    :root {
+        --background-color: #181818;
+        --primary-color: #FAFAFA;
+        --secondary-color: #BEBEBE;
+        --btn-color: #FFFFFF;
+        --btn-bg-color: #DE7A32;
+        --title-color: #DE7A32;
+        --subtitle-color: #FF9A52;
+        --card-main-color: #B23600;
+        --card-bg-color: #FF9A52;
+    }
+
+    /* General Styles */
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        background: var(--background-color);
+    }
+
+    body {
+        margin: 0;
+    }
+
+    main {
+        box-sizing: border-box;
+        max-width: 1440px;
+        padding-inline: 4rem;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+		margin: 0;
+		display: inline-block;
+	}
+
+    h1,
+    h2 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--title-color);
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--background-color);
+        -webkit-text-stroke: 2px var(--subtitle-color);
+        paint-order: stroke fill;
+    }
+
+    a,
+    a:visited,
+    p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--primary-color)
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    p {
+        font-weight: 500;
+    }
+
+    ul {
+        list-style: none;
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hide {
+        display: none !important;
+    }
+
+    @media (max-width: 834px) {
+        main {
+            padding-inline: 2rem;
+        }
+    }
+
+    @media (max-width: 430px) {
+        main {
+            padding-inline: 1rem;
+        }
+    } 
+</style>
