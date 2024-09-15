@@ -49,25 +49,7 @@ import SectionDivider from "../components/SectionDivider.astro";
         --card-bg-color: #FF9A52;
     }
 
-    /* General Styles */
-    * {
-        box-sizing: border-box;
-    }
-
-    html {
-        background: var(--background-color);
-    }
-
-    body {
-        margin: 0;
-    }
-
-    main {
-        box-sizing: border-box;
-        max-width: 1440px;
-        padding-inline: 4rem;
-    }
-
+    /* Text Stlyes */
     h1, h2, h3, h4, h5, h6, p {
 		margin: 0;
 		display: inline-block;
@@ -100,12 +82,75 @@ import SectionDivider from "../components/SectionDivider.astro";
         color: var(--primary-color)
     }
 
-    a {
-        text-decoration: none;
-    }
-
     p {
         font-weight: 500;
+    }
+
+    @media (max-width: 695px) {
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+    }
+
+    @media (max-width: 564px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 430px) {
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+    }
+
+    /* General Styles */
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        background: var(--background-color);
+        overflow-x: hidden;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    main {
+        box-sizing: border-box;
+        max-width: 1440px;
+        padding-inline: 4rem;
+        margin-inline: auto;
+    }
+
+    a {
+        text-decoration: none;
     }
 
     ul {
