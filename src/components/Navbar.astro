@@ -18,8 +18,8 @@ import GymLogo from "./GymLogo.astro";
     </ul>
     </div>
     <!-- Hamburger menu -->
-        <div class="ham-menu off-screen">
-            <div class="ham-menu__header">
+        <div class="ham-menu off-screen"> 
+            <div class="ham-menu__header"> 
                 <GymLogo /> 
                 <img src="/icons/hamburger-menu-close.svg" alt="Close hamburger menu" class="ham-btn--close">
             </div>
@@ -168,16 +168,27 @@ import GymLogo from "./GymLogo.astro";
     const hamOpen = document.querySelector(".ham-btn--open");
     const hamClose = document.querySelector(".ham-btn--close");
     const hamMenu = document.querySelector(".ham-menu");
+    const hamButtons = document.querySelectorAll(".ham-menu__btn");
     const navMenu = document.querySelector(".navbar__buttons");
 
     hamOpen.addEventListener("click", () => {
-        hamMenu.classList.remove("off-screen")
+        hamMenu.classList.remove("off-screen");
+        
         setTimeout(function() {
             navMenu.classList.add("hide");
         }, 600);
+        
+        setTimeout(function() {
+            hamButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    hamMenu.classList.add("off-screen");
+                    navMenu.classList.remove("hide");
+                })
+            })
+        }, 600);
     });
     hamClose.addEventListener("click", () => {
-        hamMenu.classList.add("off-screen")
-        navMenu.classList.remove("hide")
-    })
+        hamMenu.classList.add("off-screen");
+        navMenu.classList.remove("hide");
+    });
 </script>
