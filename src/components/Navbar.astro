@@ -1,6 +1,7 @@
 ---
 import Button from "./Button.astro";
 import GymLogo from "./GymLogo.astro";
+import HamMenuButton from "./HamMenuButton.astro";
 ---
 <nav class="navbar">
     <GymLogo />
@@ -10,55 +11,28 @@ import GymLogo from "./GymLogo.astro";
         <li class="navbar__btn"><a href="#">Our Memberships</a></li>
         <li class="navbar__btn"><a href="#">Newsletter</a></li>
         <li><Button text="Join our program" href="#"/></li>
-        <!-- Hamburger menu button -->
-            <li class="ham-btn--open">
-                <img src="/icons/hamburger-menu-open.svg" alt="Open hamburger menu">
-            </li>
-        <!--  -->
+        <HamMenuButton />
     </ul>
-    </div>
-    <!-- Hamburger menu -->
-        <div class="ham-menu off-screen"> <!-- Fix position -->
-            <div class="ham-menu__header"> 
-                <GymLogo href="#hero"/> 
-                <img src="/icons/hamburger-menu-close.svg" alt="Close hamburger menu" class="ham-btn--close">
-            </div>
-            <ul class="ham-menu__buttons">
-                <li class="ham-menu__btn"><a href="#">Our facilities</a></li>
-                <li class="ham-menu__btn"><a href="#">Our coaches</a></li>
-                <li class="ham-menu__btn"><a href="#">Our memberships</a></li>
-                <li class="ham-menu__btn"><a href="#">Newsletter</a></li>
-                <li><Button text="Join our program" class="darker ham-menu__btn" href="#"/></li>
-            </ul>
-            <p class="copyright">© Tekyo Copyright. All rights reserved.</p>
-        </div> 
-    <!--  -->
+</div>
+
 
 </nav>
 
 <style>
     .navbar {
-        max-width: 1440px;
-        padding-inline: 4rem;
-        margin-top: 1.5rem;
-        margin-inline: auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: 1.5rem;
+        margin-inline: auto;
+        padding-inline: 4rem;
+        max-width: 1440px;
     }
 
     .navbar__buttons {
         display: flex;
         align-items: center;
         gap: 2.75rem;
-    }
-
-    .ham-btn--open {
-        display: none;
-    }
-
-    .ham-menu {
-        display: none;
     }
 
     @media (max-width: 834px) {
@@ -73,75 +47,9 @@ import GymLogo from "./GymLogo.astro";
         }
     } 
 
-    /* Hamburger menu */
     @media (max-width: 1320px) {
         .navbar__btn {
             display: none;
-        }
-
-        .ham-btn--open {
-            cursor: pointer;
-            display: inline;
-            width: 2.625rem;
-            height: 3rem;
-        }
-
-        
-        .ham-menu {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 100;
-            width: 28.25rem;
-            height: 100dvh;
-            padding-block: 3.75rem;
-            background: var(--card-bg-color);
-            transition: .6s ease-in-out;
-            text-wrap: nowrap;
-        }
-        
-        .off-screen {
-            transform: translateX(100%);
-            overflow: hidden;
-            width: 0;
-        }
-
-        .ham-menu__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-inline: 4rem;
-        }
-
-        .ham-btn--close {
-            cursor: pointer;
-            height: 48px;
-        }
-
-        .ham-menu__buttons {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-inline: 4rem;
-        }
-
-        .ham-menu__btn > a {
-            font-size: 2rem;
-        }
-
-        .ham-menu__buttons :global(.btn) {
-            margin-top: 2.5rem;
-        }
-
-        .copyright {
-            font-weight: 400;
-            font-size: 1rem;
-            margin-top: auto;
-            margin-inline: 4rem;
         }
     }
 
@@ -150,43 +58,4 @@ import GymLogo from "./GymLogo.astro";
             display: none;
         }
     }
-
-    @media (max-width: 564px) {
-        .ham-menu {
-            width: 100dvw;
-        }
-
-        .off-screen {
-            transform: translateX(100%);
-            overflow: hidden;
-            width: 0;
-        }
-    } 
 </style>
-<script>
-    // Hamburger menu open and close
-    const hamOpen = document.querySelector(".ham-btn--open");
-    const hamClose = document.querySelector(".ham-btn--close");
-    const hamMenu = document.querySelector(".ham-menu");
-    const hamButtons = document.querySelectorAll(".ham-menu__btn");
-    const navMenu = document.querySelector(".navbar__buttons");
-
-    hamOpen.addEventListener("click", () => {
-        hamMenu.classList.remove("off-screen");
-        
-        setTimeout(function() {
-            navMenu.classList.add("hide");
-        }, 600);
-        
-        hamButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                hamMenu.classList.add("off-screen");
-                navMenu.classList.remove("hide");
-            })
-        })
-    });
-    hamClose.addEventListener("click", () => {
-        hamMenu.classList.add("off-screen");
-        navMenu.classList.remove("hide");
-    });
-</script>
