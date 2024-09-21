@@ -129,10 +129,27 @@ import Button from "./Button.astro"
                 navMenu.classList.remove("hide");
             })
         })
+
+        if (document.documentElement.clientWidth <= 564) {
+            disableScroll()
+        }
     });
 
     hamClose.addEventListener("click", () => {
         hamMenu.classList.add("off-screen");
         navMenu.classList.remove("hide");
+        enableScroll()
     });
+
+    function disableScroll() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+    }
+   
+    function enableScroll() {
+        window.onscroll = function() {};
+    }
 </script>
