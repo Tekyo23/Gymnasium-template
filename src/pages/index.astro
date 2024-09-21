@@ -13,6 +13,15 @@ import Button from "../components/Button.astro";
             <Button text="Start Today" href="#"></Button>
         </div>
     </section>
+    <section id="our-facilities">
+        <div class="our-facilities__text">
+            <h2 class="our-facilities__title">Our Facilities</h2>
+            <h3 class="our-facilities__subtitle">Perfect for everyone</h3>
+        </div>
+        <div class="our-facilities__video">
+            <video src="/videos/facilities.mp4" poster="/img/facilities_preview.PNG" controls></video>
+        </div>
+    </section>
 </Layout>
 
 <style>
@@ -24,6 +33,7 @@ import Button from "../components/Button.astro";
             display: grid;
             place-content: center;
         }
+
         .hero-image {
             position: absolute;
             width: 100dvw;
@@ -93,6 +103,65 @@ import Button from "../components/Button.astro";
 
             #hero {
                 height: calc(560px - 111px);
+            }
+        }
+    /* Our Facilities Section */
+        #our-facilities {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .our-facilities__text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .our-facilities__title {
+            text-transform: uppercase;
+        }
+
+        .our-facilities__video {
+            border-radius: 2rem;
+            overflow: hidden;
+            opacity: 80%
+        }
+
+        .our-facilities__video > video{
+            width: 40.25rem;
+            height: 22.688rem;
+        }
+
+        @media (max-width: 1320px) {
+            #our-facilities {
+                flex-direction: column;
+                gap: 5.5rem;
+            }
+
+            .our-facilities__text {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 695px) {
+            .our-facilities__video {
+                width: 31.125rem;
+                height: 17.563rem;
+            }
+        }
+
+        @media (max-width: 564px) {
+            .our-facilities__video {
+                width: 27.438rem;
+                height: 15.438rem;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .our-facilities__video {
+                width: 21.688rem;
+                height: 12.188rem;
             }
         }
 </style>
