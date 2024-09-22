@@ -1,0 +1,49 @@
+---
+interface Props {
+    name: string;
+    image: string;
+}
+
+const {name, image} = Astro.props
+---
+<div class="coach-card">
+    <h4 class="coach-name">{name}</h4>
+    <img src={image} alt=`Coach ${name}` class="coach-card__image">
+</div>
+
+<style>
+    .coach-card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 21.875rem;
+    }
+
+    .coach-name {
+        position: absolute;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--title-color);
+        text-transform: uppercase;
+        z-index: 100;
+        opacity: 0;
+        transition: .3s ease-in-out;
+        pointer-events: none
+    }
+
+    .coach-card__image {
+        max-width: 100%;
+        border-radius: 3.125rem;
+        overflow: hidden;
+        transition: .3s ease-in-out;
+    }
+
+    .coach-card__image:hover {
+        opacity: 40%;
+    }
+
+    .coach-card:hover > .coach-name {
+        opacity: 100%;
+    }
+</style>

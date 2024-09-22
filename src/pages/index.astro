@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro"; 
+import CoachCard from "../components/CoachCard.astro";
 ---
 
 <Layout>
@@ -20,6 +21,17 @@ import Button from "../components/Button.astro";
         </div>
         <div class="our-facilities__video">
             <video src="/videos/facilities.mp4" poster="/img/facilities_preview.PNG" controls></video>
+        </div>
+    </section>
+    <section id="our-coaches">
+        <div class="our-coaches__text">
+            <h2 class="our-coaches__title">Our Coaches</h2>
+            <h3 class="our-coaches__subtitle">Ready to help you</h3>
+        </div>
+        <div class="our-coaches__main">
+            <CoachCard name="Helen" image="/img/coach1.jpg"/>
+            <CoachCard name="John" image="/img/coach2.jpg"/>
+            <CoachCard name="Martha" image="/img/coach3.jpg"/>
         </div>
     </section>
 </Layout>
@@ -163,5 +175,33 @@ import Button from "../components/Button.astro";
                 width: 21.688rem;
                 height: 12.188rem;
             }
+        }
+    
+    /* Our Coaches Section */
+        #our-coaches  {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5.5rem;
+        }
+
+        .our-coaches__text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .our-coaches__title {
+            text-transform: uppercase;
+        }
+
+        .our-coaches__main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            row-gap: 3rem;
+            column-gap: 8.188rem;
         }
 </style>
