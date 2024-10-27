@@ -2,12 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro"; 
 import CoachCard from "../components/CoachCard.astro";
+import MembershipCard from "../components/MembershipCard.astro";
+
+import { basicBenefits, classicBenefits, commitedBenefits } from "../components/MembershipCard.astro";
 ---
 
 <Layout>
     <section id="hero">
         <div class="hero-gradient"></div>
-        <img src="/public/img/hero_image.jpg" alt="" class="hero-image">
+        <img src="/img/hero_image.jpg" alt="" class="hero-image">
         <div class="hero-text">
             <h1 class="slogan">Become the best version of yourself</h1>
             <p class="slogan-text">Whatever is your goal, we are here to help you fulfil it.</p>
@@ -32,6 +35,23 @@ import CoachCard from "../components/CoachCard.astro";
             <CoachCard name="Helen" image="/img/coach1.jpg"/>
             <CoachCard name="John" image="/img/coach2.jpg"/>
             <CoachCard name="Martha" image="/img/coach3.jpg"/>
+        </div>
+    </section>
+    <section id="our-memberships">
+        <div class="our-memberships__text">
+            <h2 class="our-memberships__title">Our Memberships</h2>
+            <h3 class="our-memberships__subtitle">7-days money back guarantee</h3>
+        </div>
+        <div class="our-memberships__main">
+            <MembershipCard url="/icons/classic-membership-logo.svg" title="Classic" price="70">
+                {classicBenefits.map(item => <p class="card__benefit">{item}</p>)}
+            </MembershipCard>
+            <MembershipCard url="/icons/committed-membership-logo.svg" title="Committed" price="120" class="primary">
+                {commitedBenefits.map(item => <p class="card__benefit">{item}</p>)}
+            </MembershipCard>
+            <MembershipCard url="/icons/basic-membership-logo.svg" title="Basic" price="45">
+                {basicBenefits.map(item => <p class="card__benefit">{item}</p>)}
+            </MembershipCard>
         </div>
     </section>
 </Layout>
@@ -203,5 +223,42 @@ import CoachCard from "../components/CoachCard.astro";
             width: 100%;
             row-gap: 3rem;
             column-gap: 8.188rem;
+        }
+    /* Our Memberships Section */
+        #our-memberships {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .our-memberships__text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5.5rem;
+        }
+
+        .our-memberships__title {
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .our-memberships__main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .membership-card {
+            height: 100px;
+        }
+
+        @media (max-width: 1372px) {
+            .our-memberships__main {
+                column-gap: 107px;
+                row-gap: 3rem;
+            }
         }
 </style>
