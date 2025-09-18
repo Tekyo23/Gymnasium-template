@@ -87,12 +87,17 @@ import HamMenu from "../components/HamMenu.astro";
         font-size: 1.5rem;
     }
 
+    h6,
     a,
     a:visited,
     p {
         font-size: 1.25rem;
         font-weight: 600;
         color: var(--primary-color)
+    }
+
+    a {
+        text-decoration: none;
     }
 
     p {
@@ -182,15 +187,27 @@ import HamMenu from "../components/HamMenu.astro";
         margin-top: 9.5rem;
     }
 
-    a {
-        text-decoration: none;
-    }
-
     ul {
         list-style: none;
         text-decoration: none;
         margin: 0;
         padding: 0;
+    }
+
+    
+    input,
+    input:active {
+        background: var(--background-color);
+        border: none;
+        outline: none;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        color: #FAFAFA50;
+    }
+
+    input::placeholder {
+        color: #FAFAFA50;
     }
 
     .hide {
