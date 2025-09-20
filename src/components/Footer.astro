@@ -3,26 +3,26 @@ import GymLogo from "./GymLogo.astro";
 ---
 
 <footer>
-    <div class="footer__column">
+    <div id="logo" class="footer__column">
         <GymLogo />
     </div>
-    <div class="footer__column">
+    <div id="navigation" class="footer__column">
         <h6 class="column__title">Navigation</h6>
         <a class="column__element" href="#our-facilities">Our facilities</a>
         <a class="column__element" href="#our-coaches">Our coaches</a>
         <a class="column__element" href="#our-memberships">Our memberships</a>
         <a class="column__element" href="#newsletter">Newsletter</a>
     </div>
-    <div class="footer__column">
+    <div id="copyright" class="footer__column">
         <a class="column__element">© Tekyo Copyright. All rights reserved.</a>
     </div>
     <div id="newsletter" class="footer__column">
         <h6 class="column__title">Join our newsletter</h6>
         <div class="newsletter__input">
-            <div class="newsletter__email" style="width: 383px; height: 48px; background: red;">
+            <div class="newsletter__email">
                 <input type="email" name="Email for the newsletter" id="newsletter-email" placeholder="email@example.com">
+                <button class="newsletter__btn"><a href="#">Submit</a></button>
             </div>
-            <button class="newsletter__btn">Submit</button>
         </div>
     </div>
 </footer>
@@ -30,12 +30,15 @@ import GymLogo from "./GymLogo.astro";
 <style>
     footer {
         display: flex;
-        justify-content: space-between;
+        column-gap: 5.25rem;
+        justify-content: center;
         align-items: center;
         max-width: 1440px;
         height: 11.875rem;
         margin-inline: auto;
+        padding-block: 2rem;
         padding-inline: 4rem;
+        text-wrap: nowrap;
     }
 
     .footer__column {
@@ -54,7 +57,17 @@ import GymLogo from "./GymLogo.astro";
     }
 
     .newsletter__input {
+        height: 48px;
+        width: 383px;
+        padding-left: 1rem;
         border: 3px solid var(--btn-bg-color);
+        border-radius: 20px;
+    }
+
+    .newsletter__email {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
     }
 
     .newsletter__email > * {
@@ -62,6 +75,32 @@ import GymLogo from "./GymLogo.astro";
     }
 
     .newsletter__btn {
+        padding-inline: 1rem;
         background: var(--btn-bg-color);
+        border: none;
+        border-top-right-radius: 13px;
+        border-bottom-right-radius: 13px;
+    }
+
+    @media (max-width: 1395px) {
+        footer {
+            flex-wrap: wrap;
+            row-gap: 1.5rem;
+            height: fit-content;
+        }
+        #copyright {
+            order: 4;
+            margin-inline: auto;
+        }
+    }
+
+    @media (max-width: 1020px) {
+        #navigation {
+            order: 3;
+        }
+
+        #copyright {
+            margin-inline: 0;
+        }
     }
 </style>
