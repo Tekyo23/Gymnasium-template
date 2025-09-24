@@ -33,6 +33,31 @@ const {url, title, price, benefit} = Astro.props;
 
 import Button from "./Button.astro"
 ---
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".our-memberships__main .membership-card");
+        const centerCard = document.querySelector(".our-memberships__main .membership-card.primary");
+
+        cards.forEach(card => {
+            card.addEventListener("mouseenter", () => {
+                // Remove primary from all
+                cards.forEach(c => c.classList.remove("primary"));
+                // Add to hovered
+                card.classList.add("primary");
+            });
+
+            card.addEventListener("mouseleave", () => {
+                // Remove from hovered
+                card.classList.remove("primary");
+                // Restore to center card if none are hovered
+                if (![...cards].some(c => c.matches(":hover"))) {
+                    centerCard.classList.add("primary");
+                }
+            });
+        });
+    });
+</script>
+
 <div class=`membership-card ${Astro.props.class}`>
     <img src={url} alt="Membership logo" class="card__logo">
     <h4 class="card__title">{title}</h4>
@@ -54,7 +79,16 @@ import Button from "./Button.astro"
         border-radius: 1.25rem;
         padding-inline: 1.625rem;
         padding-block: 1.625rem 3rem;
-        opacity: 90%;
+        opacity: 80%;
+        -webkit-transition: .2s ease-in-out;
+        -moz-transition: .2s ease-in-out;
+        -ms-transition: .2s ease-in-out;
+        -o-transition: .2s ease-in-out;
+        transition: .2s ease-in-out;
+    }
+
+    .membership-card:hover {
+        transform: scale(1.1);
     }
 
     .card__logo {
@@ -95,7 +129,8 @@ import Button from "./Button.astro"
     }
 
     .primary {
-        height: 39.938rem;
+        /* height: 39.938rem; */
+        scale: 1.1;
         box-shadow: 0px 0px 44px 0px rgba(0,0,0,0.75);
         z-index: 100;
         opacity: 100%;
@@ -111,6 +146,7 @@ import Button from "./Button.astro"
             box-shadow: none;
             height: 615px;
             z-index: 0;
+            scale: 1;
         }
     }
 
